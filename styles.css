@@ -60,3 +60,37 @@ header .lead {
   visibility: visible;
   opacity: 1;
 }
+
+#map-tooltip {
+  position: fixed;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  pointer-events: none;
+  z-index: 10;
+  visibility: hidden;
+}
+
+#map-legend {
+  position: absolute;
+  bottom: 25px;
+  right: 5px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
