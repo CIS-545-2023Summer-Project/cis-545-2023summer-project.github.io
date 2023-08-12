@@ -74,7 +74,10 @@ document.addEventListener("DOMContentLoaded", event => {
       legendColor.style.backgroundColor = color;
       legendItem.appendChild(legendColor);
 
-      const min = parseInt(quantiles[i]).toLocaleString();
+      const min =
+        i === 0
+          ? parseInt(quantiles[i]).toLocaleString()
+          : parseInt(quantiles[i] + 1).toLocaleString();
       const max = parseInt(quantiles[i + 1]).toLocaleString();
       const legendText = document.createTextNode(`${min} - ${max} yen`);
       legendItem.appendChild(legendText);

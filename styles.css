@@ -63,12 +63,12 @@ header .lead {
 
 #map-tooltip {
   position: fixed;
-  background-color: white;
+  background-color: whitesmoke;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   pointer-events: none;
-  z-index: 10;
+  z-index: 100;
   visibility: hidden;
 }
 
