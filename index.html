@@ -45,7 +45,7 @@
 
         <section id="datasources" class="mb-4">
             <h2>Data Sources</h2>
-            <p>TThe main data source for this project is the 'Japan Real Estate Prices' dataset accessible on Kaggle.
+            <p>The main data source for this project is the 'Japan Real Estate Prices' dataset accessible on Kaggle.
                 For this project's scope, we've narrowed our focus to four prefectures within Japan, which collectively
                 constitute the Greater Metropolitan Tokyo Area. The features highlighted in the table below serve as
                 the primary focus of our predictive models.</p>
@@ -63,7 +63,12 @@
                     </tr>
                     <tr>
                         <th>Size</th>
-                        <td>Total: 1.05GB; 48 csv files; 1 csv per Japanese prefecture (47 in total)</td>
+                        <td>
+                            <li>Total: 1.05GB; 48 csv files; 1 csv for prefecture codes; 47 csvs for each prefecture's details</li>
+                            <li>Per prefecture: 38 columns per csv; at least 20k+ rows per csv</li>
+                            <li>Tokyo: 407k rows (largest prefecture)</li>
+                            <li>Greater Tokyo Area (Tokyo; Chiba; Kanagawa; Saitama): ~1.081M rows</li>
+                        </td>
                     </tr>
                     <tr>
                         <th>Features</th>
