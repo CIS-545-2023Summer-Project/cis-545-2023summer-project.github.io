@@ -360,9 +360,63 @@
 
         <!-- Exploratory Data Analysis Section -->
         <section id="exploratory-data-analysis" class="mb-4">
-            <h2>Exploratory Data Analysis</h2>
-            <p><a href="https://colab.research.google.com/drive/1_mMlwNhB6bZNGPg5qQhbK0o2pPvrPsjk" target="_blank">Colab
-                    Notebook for Exploratory Data Analysis</a></p>
+            <h2>Exploratory Data Analysis
+                <a href="https://colab.research.google.com/drive/1_mMlwNhB6bZNGPg5qQhbK0o2pPvrPsjk" target="_blank"
+                    class="btn btn-primary btn-sm ml-2" id="colab-btn">View Colab Notebook</a>
+                <span class="tooltip-text" id="tooltip-text">This notebook contains details regarding exploratory data
+                    analysis.</span>
+            </h2>
+
+            <h5>Correlation Matrix Analysis</h5>
+            <p>Load Numeric Features: Only numeric features were considered, as including one-hot encoded categorical
+                features would not work as effectively.</p>
+            <ul>
+                <li>Heatmap Insights:</li>
+                <ul>
+                    <li>Strong positive correlation between Building Year and Building Age.</li>
+                    <li>Building Age is a better indicator of the building's condition.</li>
+                    <li>Multicollinearity is not a significant issue.</li>
+                </ul>
+                <li>Key Positive Correlations:</li>
+                <ul>
+                    <li>TradePrice - BuildingYear: 0.390</li>
+                    <li>TradePrice - TotalFloorArea: 0.313</li>
+                    <!-- Add other positive correlations here -->
+                </ul>
+                <li>Key Negative Correlations:</li>
+                <ul>
+                    <li>TradePrice - BuildingAge: -0.388</li>
+                    <li>Building Year - Building Age: -0.963</li>
+                    <!-- Add other negative correlations here -->
+                </ul>
+            </ul>
+
+            <h5>PCA Analysis</h5>
+            <h6>PCA Data: All Features</h6>
+            <p>Numeric Features: Visualization using PCA components is more effective without one-hot encoded
+                categorical features.</p>
+            <ul>
+                <li>Explained Variance Plot: Two PCA components explain ~55% of the total variance.</li>
+                <li>Dimensions Insight:</li>
+                <ul>
+                    <li>Dimension 1: Building Age and Value (TradePrice)</li>
+                    <li>Dimension 2: Area and Distance</li>
+                </ul>
+                <li>Prefecture Insights: The plot captures many correlations.</li>
+            </ul>
+
+            <h6>PCA Data: No Year</h6>
+            <p>Year Dropped: As Year of sale's variance was not captured, and it relates the least as a property
+                descriptor, it was dropped.</p>
+            <ul>
+                <li>Explained Variance: ~63% of the data's variance is accounted for in two dimensions.</li>
+                <li>Other Variance Results (2 dimensions):</li>
+                <ul>
+                    <li>5 Features (Drop Year, TotalFloorArea, BuildingYear): 64.4%</li>
+                    <li>6 Features (Drop Year, TotalFloorArea): 67.0%</li>
+                    <li>6 Features (Drop Year, BuildingYear): 61.9%</li>
+                </ul>
+            </ul>
         </section>
 
         <!-- Data Modeling Section -->
