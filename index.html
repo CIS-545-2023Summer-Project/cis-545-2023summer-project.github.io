@@ -519,7 +519,7 @@
         <section id="data-modeling" class="mb-4">
             <h2>Data Modeling</h2>
 
-            <!-- Regression Analysis Subsection -->
+            <!-- Ridge, Lasso & Elastic Net Regression Analysis Subsection -->
             <h4>Ridge, Lasso & Elastic Net Regressions
                 <a href="https://colab.research.google.com/drive/1byr7cK3ms8N_QnnEsl2XaOooHY30ZwoG#scrollTo=SvIMse4rXVBI"
                     target="_blank" class="btn btn-primary btn-sm ml-2" id="colab-btn">View Colab Notebook</a>
@@ -589,6 +589,50 @@
                     style="width: 100%; max-width: 900px; display: block; margin: 15px auto;">
             </ul>
 
+            <!-- XGBoost Regression Analysis Subsection -->
+            <h4>XGBoost Regression
+                <a href="https://colab.research.google.com/drive/1byr7cK3ms8N_QnnEsl2XaOooHY30ZwoG#scrollTo=LeIFl5fCPVUw"
+                    target="_blank" class="btn btn-primary btn-sm ml-2" id="colab-btn">View Colab Notebook</a>
+                <span class="tooltip-text" id="tooltip-text" style="margin-top: 0.5px;">XGBoost regression
+                    details.</span>
+            </h4>
+            <p>XGBoost was also run to improve predictability. As shown below, there was a tangible improvement, with
+                R<sup>2</sup> increasing from 0.66 to 0.78 and Mean Average Error falling to 5.4 million yen ($37,000
+                USD).</p>
+            <p>Due to resource constraints, Random Search was used to tune key hyperparameters (learning rate,
+                colsample, and subsample), which is suboptimal versus more comprehensive approaches such as Grid Search.
+                Hence, it is believed there is additional room for improvement if needed.</p>
+
+            <h6>Best Parameters for XGBoost</h6>
+            <ul>
+                <li><strong>subsample</strong>: 0.8</li>
+                <li><strong>learning_rate</strong>: 0.1</li>
+                <li><strong>colsample_bytree</strong>: 0.8</li>
+            </ul>
+
+            <h6>XGBoost Regression Metrics</h6>
+            <ul>
+                <li>R<sup>2</sup> Score: 0.7818116048871434</li>
+                <li>MAE: 5408101.326656046</li>
+                <li>MSE: 56651484164363.87</li>
+                <li>RMSE: 7526718.020781958</li>
+            </ul>
+
+            <p>Below, the optimal parameters for XGBoost are visualized alongside a ranking of feature importance.
+                Similar to the linear regression, XGBoost found floor plans, building age, and distance to city center
+                to be the principal drivers of trade price.</p>
+            <img src="images/xgboost.png" alt="XGBoost Feature Importances"
+                style="width: 100%; max-width: 900px; display: block; margin: 15px auto;">
+
+            <h6>Interpretation</h6>
+            <ul>
+                <li><strong>R<sup>2</sup> Score</strong>: Measures how well our model's predictions match the actual
+                    data. A score of 0.78 means our model explains 78% of the variability in residential trade prices.
+                </li>
+                <li><strong>MAE</strong>: On average, predictions are off by ¥5,408,101.33.</li>
+                <li><strong>MSE</strong>: An average of squared errors. High value can be due to large errors.</li>
+                <li><strong>RMSE</strong>: Predictions are off by an average of ¥7,526,718.02.</li>
+            </ul>
 
             <!-- KMeans, Random Forest Subsection -->
             <h5>KMeans and Random Forest</h5>
