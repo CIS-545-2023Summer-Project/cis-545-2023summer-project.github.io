@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CIS 545 Final Project - Japan Real Estate Prices Analysis</title>
+    <link rel="icon" href="images/favicon.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
@@ -23,11 +24,13 @@
             <h2>Introduction</h2>
             <p>Real estate isn't just about buildings and land; it's a vital part of our economy and personal lives.
                 Whether you're a homeowner, investor, or policymaker, understanding property values is crucial. In this
-                project, we focus on Greater Metropolitan Tokyo's real estate markets to uncover the key drivers that influence
+                project, we focus on Greater Metropolitan Tokyo's real estate markets to uncover the key drivers that
+                influence
                 property prices.</p>
             <p>We are not just looking at traditional factors like location and size. Our analysis dives deeper,
                 exploring a broad array of features and their intricate relationships with property values. By doing
-                this, we aim to discover perspectives that go beyond conventional wisdom, reflecting trends such as Japan's
+                this, we aim to discover perspectives that go beyond conventional wisdom, reflecting trends such as
+                Japan's
                 prolonged period of low deflation over the past 15 years.</p>
             <p>Why does this matter? Because real estate decisions affect us all. A shift in property values can have
                 significant economic impacts, as history has shown us. Our project isn't just for experts and
@@ -42,8 +45,10 @@
 
         <section id="datasources" class="mb-4">
             <h2>Data Sources</h2>
-            <p>The primary data source for this project is the Japan Real Estate Prices dataset available on Kaggle. We
-                focused on the highlighted features for the scope of this project.</p>
+            <p>TThe main data source for this project is the 'Japan Real Estate Prices' dataset accessible on Kaggle.
+                For this project's scope, we've narrowed our focus to four prefectures within Japan, which collectively
+                constitute the Greater Metropolitan Tokyo Area. The features highlighted in the table below serve as
+                the primary focus of our predictive models.</p>
 
             <table class="table table-striped">
                 <tbody>
@@ -78,8 +83,8 @@
                             Floor area ratio,
                             Price per Tsubo,
                             Land shape, Frontage, Area,
-                            Prewar building, Use, Purpose, Direction,
-                            Classification, Breadth,
+                            Prewar building, Use, Purpose,
+                            Direction, Classification, Breadth,
                             Period, Year, Quarter
                         </td>
                     </tr>
@@ -92,6 +97,58 @@
             <h2>Data Preprocessing</h2>
             <p><a href="https://colab.research.google.com/drive/11wb7jZXQetHCZnSsu5rKHmJ_8dsJXf6i" target="_blank">Colab
                     Notebook for Data Preprocessing</a></p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>Introduction</h5>
+                        <p>The data preprocessing was an extensive and critical phase in the preparation of Japanese
+                            Real Estate data, focusing on the Greater Tokyo Area (GTA). The GTA was selected from over 1
+                            million rows of data, covering only four out of 38 initial prefectures.</p>
+                        <h5>Key Highlights</h5>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>NULL Handling & Imputation</td>
+                                <td>Missing values were systematically treated using imputation or removal, depending on
+                                    the nature of the attribute.</td>
+                            </tr>
+                            <tr>
+                                <td>Categorization & Binning</td>
+                                <td>Features like 'FloorPlan' and 'CityPlanning' were reorganized to prevent overfitting
+                                    and facilitate modeling. Building materials were categorized by their quality and
+                                    value.</td>
+                            </tr>
+                            <tr>
+                                <td>Feature Engineering</td>
+                                <td>New features were created, such as a building's age at the time of sale, and less
+                                    useful features were dropped.</td>
+                            </tr>
+                            <tr>
+                                <td>Location Analysis</td>
+                                <td>The integration of geographic information with real estate data was achieved using
+                                    latitude and longitude centroids. This included calculating the distance of
+                                    properties from Tokyo's city center.</td>
+                            </tr>
+                            <tr>
+                                <td>Data Scope Reduction</td>
+                                <td>The scope was narrowed down to approximately 1 million rows for the GTA, excluding
+                                    irrelevant or less significant regions.</td>
+                            </tr>
+                            <tr>
+                                <td>Final Data Transformation</td>
+                                <td>26 key columns were left after thorough cleaning and transformation, ensuring
+                                    readiness for Exploratory Data Analysis (EDA) and machine learning tasks.</td>
+                            </tr>
+                        </table>
+                        <h5>Conclusion</h5>
+                        <p>The preprocessing stage laid a robust foundation for analysis and machine learning models. By
+                            focusing on relevant geographic subsets, handling NULL values, categorizing features, and
+                            employing strategic feature engineering, the data is now refined to support specific
+                            insights into the Japanese real estate market in the GTA. This optimization reflects a
+                            methodical approach to data handling, enhancing the accuracy and efficiency of future
+                            analytical processes.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Exploratory Data Analysis Section -->
