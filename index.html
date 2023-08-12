@@ -634,6 +634,39 @@
                 <li><strong>RMSE</strong>: Predictions are off by an average of ¥7,526,718.02.</li>
             </ul>
 
+            <h4>Linear Optimization
+                <a href="https://colab.research.google.com/drive/1rR99J75MM58zFRnIT37C-A7JoVdEHOI9#scrollTo=3XbaL0gzbA5l"
+                    target="_blank" class="btn btn-primary btn-sm ml-2" id="colab-btn">View Colab Notebook</a>
+                <span class="tooltip-text" id="tooltip-text" style="margin-top: 0.5px;">Linear optimization problem
+                    details.</span>
+            </h4>
+            <p>Linear Optimization (LP) problem using the PuLP library on Japanese real estate
+                data, with predictions from our XGBoost model. This demonstrates the application of machine learning and
+                constraints within decision-making in the real estate market.</p>
+            <ul>
+                <li>Simulation of Listing Price Data: The Listed Price follows a normal distribution around the actual
+                    sale price (TradePrice), with a standard
+                    deviation of ± 0.05. This reflects the stable and non-volatile nature of the Japanese market.</li>
+                <li>Expected Profit Calculation: Expected profit is calculated using the model's prediction of resale
+                    value in the present day.</li>
+                <li>Filtering Listings for LP: 2,000 of the 160,850 possible properties are randomly sampled from the
+                    most recent sales data (2019). </li>
+                <li>LP Objective: The goal is to maximize profit from real estate investments with constraints on
+                    budget, property
+                    selection, location, and building age.
+                    <ul>
+                        <li>Decision Variables and Constraints: Binary decision variables represent selection for
+                            purchase, with constraints on budget, number of
+                            properties, time to station, building age, and zonage.</li>
+                        <li>Objective Function: The objective is to maximize the sum of expected profits subject to the
+                            constraints.</li>
+                    </ul>
+                </li>
+                <li>Solution and Verification: The optimal solution purchased 100 properties with an objective value of
+                    1,260,526,367.09 yen.
+                    Constraints were successfully verified, reflecting a feasible solution.</li>
+            </ul>
+
             <!-- KMeans, Random Forest Subsection -->
             <h5>KMeans and Random Forest</h5>
             <p><a href="https://colab.research.google.com/drive/1vSTGEb9ht-lYmoz99XzVELNZbwHfJHW_" target="_blank">Colab
