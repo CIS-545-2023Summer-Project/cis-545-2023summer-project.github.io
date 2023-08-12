@@ -634,6 +634,7 @@
                 <li><strong>RMSE</strong>: Predictions are off by an average of ¥7,526,718.02.</li>
             </ul>
 
+            <!-- Linear Optimization Subsection -->
             <h4>Linear Optimization
                 <a href="https://colab.research.google.com/drive/1rR99J75MM58zFRnIT37C-A7JoVdEHOI9#scrollTo=3XbaL0gzbA5l"
                     target="_blank" class="btn btn-primary btn-sm ml-2" id="colab-btn">View Colab Notebook</a>
@@ -668,10 +669,83 @@
             </ul>
 
             <!-- KMeans, Random Forest Subsection -->
-            <h5>KMeans and Random Forest</h5>
-            <p><a href="https://colab.research.google.com/drive/1vSTGEb9ht-lYmoz99XzVELNZbwHfJHW_" target="_blank">Colab
-                    Notebook for KMeans and Random Forest Analysis</a></p>
+            <h4>KMeans Clustering and Random Forest
+                <a href="https://colab.research.google.com/drive/1vSTGEb9ht-lYmoz99XzVELNZbwHfJHW_" target="_blank"
+                    class="btn btn-primary btn-sm ml-2" id="colab-btn">View Colab Notebook</a>
+                <span class="tooltip-text" id="tooltip-text" style="margin-top: 0.5px;">KMeans Clustering and Random
+                    Forest in detail.</span>
+            </h4>
 
+            <h6>K-Means Clustering</h6>
+            <p>In this section, the elbow method is used to determine the optimal number of clusters for K-Means
+                clustering. Some key findings include:</p>
+            <ul>
+                <li>Optimal cluster size is around 12, based on WCSS decline rate.</li>
+                <li>A total of 12 clusters were fitted, most ranging between 50,000-70,000 in size.</li>
+                <li>Clusters 2, 4, and 7 are much smaller, with cluster 4 being the smallest.</li>
+                <li>Clusters 4 and 7 signify super luxury homes, explaining their smaller size.</li>
+                <li>Cluster 2 consists of residences further from stations and the city center, likely in Kanagawa
+                    Prefecture's rural parts.</li>
+                <li>Scaling was reversed for latitude and longitude, and clusters were exported for future analysis.
+                </li>
+                <li>Clusters were added back to the original data frame and transformed using one-hot encoding.</li>
+            </ul>
+            <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="images/cluster_price.png"
+                            style="width: 75%; max-width: 900px; display: block; margin: 15px auto;"
+                            alt="Cluster Price">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/cluster_floorarea.png"
+                            style="width: 75%; max-width: 900px; display: block; margin: 15px auto;"
+                            alt="Cluster Floor Area">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/cluster_age.png"
+                            style="width: 75%; max-width: 900px; display: block; margin: 15px auto;" alt="Cluster Age">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/cluster_distance.png"
+                            style="width: 75%; max-width: 900px; display: block; margin: 15px auto;"
+                            alt="Cluster Distance">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/cluster_timenearstation.png"
+                            style="width: 75%; max-width: 900px; display: block; margin: 15px auto;"
+                            alt="Cluster Time Near Station">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#imageCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#imageCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
+            </div>
+
+            <h6>Random Forest</h6>
+            <p>This section provides details on the random forest regressor model used on the Japanese Real Estate data.
+                Key information includes:</p>
+            <ul>
+                <li>Leveraging cluster information for enhanced modeling accuracy.</li>
+                <li>Data pre-processing with transformations like one-hot encoding and numerical standardization.</li>
+                <li>Use of cuda and cuml to speed up calculations with GPU.</li>
+                <li>Removal of missing rows in the 'renovations' dimension to maintain consistency.</li>
+                <li>Data split between training and test sets before training cuML's RandomForestRegressor.</li>
+                <li>Performance Metrics:</li>
+                <ul>
+                    <li>R2 Score: 0.4931187629699707</li>
+                    <li>MAE: 10,405,975.0</li>
+                    <li>MSE: 1.1020298e+16</li>
+                    <li>RMSE: 104,977,610.0</li>
+                </ul>
+                <li>The random forest regression performed worse than its linear regression and XGBoost counterparts.
+                </li>
+            </ul>
         </section>
     </main>
 
