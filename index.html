@@ -519,11 +519,80 @@
         <section id="data-modeling" class="mb-4">
             <h2>Data Modeling</h2>
 
-
             <!-- Regression Analysis Subsection -->
-            <h5>Regression Analysis</h5>
-            <p><a href="https://colab.research.google.com/drive/1byr7cK3ms8N_QnnEsl2XaOooHY30ZwoG" target="_blank">Colab
-                    Notebook for Regression Analysis</a></p>
+            <h4>Ridge, Lasso & Elastic Net Regressions
+                <a href="https://colab.research.google.com/drive/1byr7cK3ms8N_QnnEsl2XaOooHY30ZwoG#scrollTo=SvIMse4rXVBI"
+                    target="_blank" class="btn btn-primary btn-sm ml-2" id="colab-btn">View Colab Notebook</a>
+                <span class="tooltip-text" id="tooltip-text" style="margin-top: 0.5px;">Ridge, Lasso, and Elastic Net
+                    regression details.</span>
+            </h4>
+
+            <h6>Data Preparation</h6>
+            <ul>
+                <li><b>Missing Data</b>: Renovations (~17% missing); missing rows removed.</li>
+                <li><b>Outlier Treatment</b>: ~2% data removed based on certain criteria:
+                    <ul>
+                        <li>Residence <= 70 minutes from nearest station.</li>
+                        <li>Residence <= 75km from city center.</li>
+                        <li>Building built before 1969.</li>
+                    </ul>
+                </li>
+                <li><b>Avoiding Multicollinearity</b>: Selecting the better feature of the highly correlated pairs such
+                    as total floor area vs. area and building
+                    year vs. building age (correlation > 0.4).</li>
+                <li>Collecting Top Predictors from Mutual Information Regression:
+                    <ul>
+                        <li>Floor plan (e.g., 3LDK, 4LDK).</li>
+                        <li>Type (pre-owned condo vs. residential land).</li>
+                        <li>Structure (wood, reinforced concrete, etc.).</li>
+                    </ul>
+                </li>
+                <li><b>Outlier Removal</b>: Used IQR method; ~5% records removed (luxury homes).
+                    <ul>
+                        <li>Total rows before filtering: 564830</li>
+                        <li>Total rows after filtering: 536165</li>
+                        <li>Percentage of data removed: 5.07%</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h6>Model Development</h6>
+            <ul>
+                <li><b>Normalization</b>: Log1p applied to prices.</li>
+                <li><b>Encoding</b>: Numerical data standardized, categorical data one-hot encoded.</li>
+            </ul>
+
+            <h6>Ridge Regression</h6>
+            <ul>
+                <li>Best alpha: 0.1</li>
+                <li>R2: 0.6637, MAE: 7096718.34, MSE: 101239685089078.39, RMSE: 10061793.33</li>
+            </ul>
+            <h6>Lasso Regression</h6>
+            <ul>
+                <li>Best alpha: 0.0001</li>
+                <li>R2: 0.6633, MAE: 7106455.41, MSE: 117297279283836.47, RMSE: 10830386.85</li>
+            </ul>
+            <h6>Elastic Net Regression</h6>
+            <ul>
+                <li>Best alpha: 0.0001, l1_ratio: 0.2</li>
+                <li>R2: 0.6633, MAE: 7105903.57, MSE: 115633705992693.89, RMSE: 10753311.40</li>
+            </ul>
+
+            <h6>Key Findings</h6>
+            <ul>
+                <li>Similar results across Ridge, Lasso, Elastic Net Regression Models. <br/>
+                    Elastic Net seems to have slightly better
+                    coefficients (R2 value ~0.66, MAE ~7 million Yen).</li>
+                <li><b>Most Influential Features</b>: Floor plans, building age, distance to city center.</li>
+                <li><b>Example Coefficients</b>:
+                    <ul>
+                        <li>FloorPlan_Large Home: 1.14</li>
+                        <li>Building_Age: -0.34</li>
+                        <li>Distance_City_Center_KM: -0.31</li>
+                    </ul>
+                </li>
+            </ul>
+
 
             <!-- KMeans, Random Forest Subsection -->
             <h5>KMeans and Random Forest</h5>
