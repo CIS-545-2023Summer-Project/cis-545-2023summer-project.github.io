@@ -329,7 +329,7 @@
                             </tr>
                             <tr>
                                 <td>Renovation</td>
-                                <td><b>577953</b></td>
+                                <td><span class="highlight-warn">577953</span></td>
                                 <td>float64</td>
                             </tr>
                             <tr>
@@ -368,8 +368,10 @@
             </h2>
 
             <h5>Correlation Matrix Analysis</h5>
-            <p>Load Numeric Features: Only numeric features were considered, as including one-hot encoded categorical
+            <p>Only numeric features were considered, as including one-hot encoded categorical
                 features would not work as effectively.</p>
+            <img src="images/eda_corr.png" alt="Correlation Matrix Heatmap"
+                style="width: 100%; max-width: 900px; display: block; margin: 15px auto;">
             <ul>
                 <li>Heatmap Insights:</li>
                 <ul>
@@ -395,6 +397,14 @@
             <h6>PCA Data: All Features</h6>
             <p>Numeric Features: Visualization using PCA components is more effective without one-hot encoded
                 categorical features.</p>
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <img src="images/pca_all_var.png" alt="PCA All Variance" class="img-fluid mb-3">
+                </div>
+                <div class="col-md-7">
+                    <img src="images/pca_all.png" alt="PCA All" class="img-fluid mb-3">
+                </div>
+            </div>
             <ul>
                 <li>Explained Variance Plot: Two PCA components explain ~55% of the total variance.</li>
                 <li>Dimensions Insight:</li>
@@ -408,6 +418,14 @@
             <h6>PCA Data: No Year</h6>
             <p>Year Dropped: As Year of sale's variance was not captured, and it relates the least as a property
                 descriptor, it was dropped.</p>
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <img src="images/pca_no_year_var.png" alt="PCA All Variance" class="img-fluid mb-3">
+                </div>
+                <div class="col-md-7">
+                    <img src="images/pca_no_year.png" alt="PCA All" class="img-fluid mb-3">
+                </div>
+            </div>
             <ul>
                 <li>Explained Variance: ~63% of the data's variance is accounted for in two dimensions.</li>
                 <li>Other Variance Results (2 dimensions):</li>
