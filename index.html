@@ -21,9 +21,11 @@
 
     <main class="container">
         <section id="introduction" class="mb-4">
-            <h2>Introduction <a href="https://docs.google.com/document/d/1bT5gIUz0BQJXp8fasvlIojsc32E4hPE6jGohxqlyHEk/edit?usp=sharing"
+            <h2>Introduction <a
+                    href="https://docs.google.com/document/d/1bT5gIUz0BQJXp8fasvlIojsc32E4hPE6jGohxqlyHEk/edit?usp=sharing"
                     target="_blank" class="btn btn-primary btn-sm ml-2" id="colab-btn">View Project Proposal</a>
-                <span class="tooltip-text" id="tooltip-text">This document contains details regarding our project proposal.</span>
+                <span class="tooltip-text" id="tooltip-text">This document contains details regarding our project
+                    proposal.</span>
             </h2>
             <p>Real estate isn't just about buildings and land; it's a vital part of our economy and personal lives.
                 Whether you're a homeowner, investor, or policymaker, understanding property values is crucial. In this
@@ -48,57 +50,113 @@
 
         <section id="datasources" class="mb-4">
             <h2>Data Sources</h2>
-            <p>The main data source for this project is the 'Japan Real Estate Prices' dataset accessible on Kaggle.
-                For this project's scope, we've narrowed our focus to four prefectures within Japan, which collectively
-                constitute the Greater Metropolitan Tokyo Area. The features highlighted in the table below serve as
-                the primary focus of our predictive models.</p>
+            <p>The main data sources for this project include the 'Japan Real Estate Prices' dataset accessible on
+                Kaggle and the 'Japan Municipal Boundaries Data' provided by ESRI Japan Corporation.</p>
 
-            <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <th>Dataset</th>
-                        <td>Japan Real Estate Prices</td>
-                    </tr>
-                    <tr>
-                        <th>Link</th>
-                        <td><a href="https://www.kaggle.com/datasets/nishiodens/japan-real-estate-transaction-prices"
-                                target="_blank">Japan Real Estate Prices Kaggle Dataset</a></td>
-                    </tr>
-                    <tr>
-                        <th>Size</th>
-                        <td>
-                            <li>Total: 1.05GB; 48 csv files; 1 csv for prefecture codes; 47 csvs for each prefecture's
-                                details</li>
-                            <li>Per prefecture: 38 columns per csv; at least 20k+ rows per csv</li>
-                            <li>Tokyo: 407k rows (largest prefecture)</li>
-                            <li>Greater Tokyo Area (Tokyo; Chiba; Kanagawa; Saitama): ~1.081M rows</li>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Features</th>
-                        <td>
-                            <span class="highlight">Prefecture</span>,
-                            <span class="highlight">District</span>,
-                            <span class="highlight">Nearest station</span>,
-                            <span class="highlight">Time to nearest station (min & max)</span>,
-                            <span class="highlight">Trade price</span>,
-                            <span class="highlight">Total floor area</span>,
-                            <span class="highlight">Unit price</span>,
-                            <span class="highlight">Building year</span>,
-                            <span class="highlight">City planning</span>,
-                            <span class="highlight">Renovation</span>,
-                            Type, Region, Municipality code & name,
-                            Coverage ratio,
-                            Floor area ratio,
-                            Price per Tsubo,
-                            Land shape, Frontage, Area,
-                            Prewar building, Use, Purpose,
-                            Direction, Classification, Breadth,
-                            Period, Year, Quarter
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Japan Real Estate Prices -->
+                        <h5>Japan Real Estate Prices</h5>
+                        <p>For this project's scope, we've narrowed our focus to four prefectures within Japan, which
+                            collectively
+                            constitute the Greater Metropolitan Tokyo Area. The features highlighted in the table below
+                            serve as the
+                            primary focus of our predictive models.</p>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th>Link</th>
+                                    <td><a href="https://www.kaggle.com/datasets/nishiodens/japan-real-estate-transaction-prices"
+                                            target="_blank">Japan Real Estate Prices Kaggle Dataset</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Size</th>
+                                    <td>
+                                        <li>Total: 1.05GB; 48 csv files; 1 csv for prefecture codes; 47 csvs for each
+                                            prefecture's
+                                            details</li>
+                                        <li>Per prefecture: 38 columns per csv; at least 20k+ rows per csv</li>
+                                        <li>Tokyo: 407k rows (largest prefecture)</li>
+                                        <li>Greater Tokyo Area (Tokyo; Chiba; Kanagawa; Saitama): ~1.081M rows</li>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Features</th>
+                                    <td>
+                                        <span class="highlight">Prefecture</span>,
+                                        <span class="highlight">District</span>,
+                                        <span class="highlight">Nearest station</span>,
+                                        <span class="highlight">Time to nearest station (min & max)</span>,
+                                        <span class="highlight">Trade price</span>,
+                                        <span class="highlight">Total floor area</span>,
+                                        <span class="highlight">Unit price</span>,
+                                        <span class="highlight">Building year</span>,
+                                        <span class="highlight">City planning</span>,
+                                        <span class="highlight">Renovation</span>,
+                                        Type, Region, Municipality code & name,
+                                        Coverage ratio,
+                                        Floor area ratio,
+                                        Price per Tsubo,
+                                        Land shape, Frontage, Area,
+                                        Prewar building, Use, Purpose,
+                                        Direction, Classification, Breadth,
+                                        Period, Year, Quarter
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Japanese Nationwide Municipal Boundary Data -->
+                        <h5>Japanese Nationwide Municipal Boundary Data</h5>
+                        <p>For the geospatial analysis, we use the 'Japanese Nationwide Municipal Boundary Data'
+                            provided by ESRI Japan Corporation. We will convert this into geojson format during the
+                            preprocessing
+                            stage.</p>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th>Link</th>
+                                    <td><a href="https://www.esrij.com/products/japan-shp/" target="_blank">Japanese
+                                            Nationwide Municipal Boundary Data</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Size</th>
+                                    <td>6.2MB</td>
+                                </tr>
+                                <tr>
+                                    <th>Coordinate System</th>
+                                    <td>Geographic Coordinate System JGD 2011 (Latitude & Longitude JGD 2011)</td>
+                                </tr>
+                                <tr>
+                                    <th>Attributes</th>
+                                    <td>
+                                        <li>JCODE: Municipal Code (5-digit JIS code)</li>
+                                        <li>KEN: Prefecture Name</li>
+                                        <li>SICHO: Subprefecture Name</li>
+                                        <li>GUN: County Name (only for towns and villages)</li>
+                                        <li>SIKUCHOSON: City, Ward, Town, Village Name</li>
+                                        <li>CITY_ENG: City Name (English)</li>
+                                        <li>P_NUM: Population</li>
+                                        <li>H_NUM: Number of Households</li>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>File Composition</th>
+                                    <td>
+                                        <li>japan_verxx.shp: Shape Data</li>
+                                        <li>japan_verxx.shx: Index Data</li>
+                                        <li>japan_verxx.dbf: Attribute Data</li>
+                                        <li>japan_verxx.sbn/sbx: Spatial Index Data</li>
+                                        <li>japan_verxx.prj: Projection Information</li>
+                                        <li>japan_verxx.shp.xml: Metadata</li>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Data Preprocessing Section -->
@@ -114,50 +172,188 @@
                     <div class="col-md-12">
                         <h5>Introduction</h5>
                         <p>The data preprocessing was an extensive and critical phase in the preparation of Japanese
-                            Real Estate data, focusing on the Greater Tokyo Area (GTA). The GTA was selected from over 1
-                            million rows of data, covering only four out of 38 initial prefectures.</p>
+                            Real Estate data, focusing on the Greater Tokyo Area (GTA). The GTA was selected from over 2
+                            million rows of data, covering 4 out of 47 initial prefectures.</p>
                         <h5>Key Highlights</h5>
-                        <table class="table table-bordered">
+                        <table class="table table-striped">
                             <tr>
-                                <td>NULL Handling & Imputation</td>
+                                <th>Data Scope Reduction</th>
+                                <td>The scope was narrowed down to approximately 1 million rows for the GTA, excluding
+                                    irrelevant or less significant regions.</td>
+                            </tr>
+                            <tr>
+                                <th>NULL Handling & Imputation</th>
                                 <td>Missing values were systematically treated using imputation or removal, depending on
                                     the nature of the attribute.</td>
                             </tr>
                             <tr>
-                                <td>Categorization & Binning</td>
-                                <td>Features like 'FloorPlan' and 'CityPlanning' were reorganized to prevent overfitting
-                                    and facilitate modeling. Building materials were categorized by their quality and
-                                    value.</td>
+                                <th>Categorization & Binning</th>
+                                <td>Features like 'FloorPlan', 'Structure' and 'CityPlanning' were reorganized to
+                                    prevent overfitting
+                                    and facilitate modeling.</td>
                             </tr>
                             <tr>
-                                <td>Feature Engineering</td>
+                                <th>Feature Engineering</th>
                                 <td>New features were created, such as a building's age at the time of sale, and less
-                                    useful features were dropped.</td>
+                                    useful features were dropped, reducing dataset volume and complexity.</td>
                             </tr>
                             <tr>
-                                <td>Location Analysis</td>
+                                <th>Location Analysis</th>
                                 <td>The integration of geographic information with real estate data was achieved using
                                     latitude and longitude centroids. This included calculating the distance of
                                     properties from Tokyo's city center.</td>
                             </tr>
                             <tr>
-                                <td>Data Scope Reduction</td>
-                                <td>The scope was narrowed down to approximately 1 million rows for the GTA, excluding
-                                    irrelevant or less significant regions.</td>
-                            </tr>
-                            <tr>
-                                <td>Final Data Transformation</td>
+                                <th>Final Data Transformation</th>
                                 <td>26 key columns were left after thorough cleaning and transformation, ensuring
-                                    readiness for Exploratory Data Analysis (EDA) and machine learning tasks.</td>
+                                    readiness for Exploratory Data Analysis (EDA) and machine learning tasks. Only the
+                                    'Renovation' column contains approximately 17% NULL values.</td>
                             </tr>
                         </table>
-                        <h5>Conclusion</h5>
-                        <p>The preprocessing stage laid a robust foundation for analysis and machine learning models. By
-                            focusing on relevant geographic subsets, handling NULL values, categorizing features, and
-                            employing strategic feature engineering, the data is now refined to support specific
-                            insights into the Japanese real estate market in the GTA. This optimization reflects a
-                            methodical approach to data handling, enhancing the accuracy and efficiency of future
-                            analytical processes.</p>
+                        <h5>Preprocessed Data Information</h5>
+                        <p>The preprocessed data was saved as <b>gta_residential.csv</b> at our <a
+                                href="https://drive.google.com/drive/u/0/folders/105-93geAvFsR5Qc-Ya2GJ1WTKb7WCHz9"
+                                target="_blank">Shared Google Drive
+                                PreprocessedData Folder</a>
+                            for exploratory data analysis,
+                            visualization and modeling purposes.</p>
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Column</th>
+                                <th>Non-Null Count</th>
+                                <th>Dtype</th>
+                            </tr>
+                            <tr>
+                                <td>No</td>
+                                <td>696333</td>
+                                <td>int64</td>
+                            </tr>
+                            <tr>
+                                <td>Type</td>
+                                <td>696333</td>
+                                <td>object</td>
+                            </tr>
+                            <tr>
+                                <td>MunicipalityCode</td>
+                                <td>696333</td>
+                                <td>int64</td>
+                            </tr>
+                            <tr>
+                                <td>Prefecture</td>
+                                <td>696333</td>
+                                <td>object</td>
+                            </tr>
+                            <tr>
+                                <td>Municipality</td>
+                                <td>696333</td>
+                                <td>object</td>
+                            </tr>
+                            <tr>
+                                <td>DistrictName</td>
+                                <td>696333</td>
+                                <td>object</td>
+                            </tr>
+                            <tr>
+                                <td>NearestStation</td>
+                                <td>696333</td>
+                                <td>object</td>
+                            </tr>
+                            <tr>
+                                <td>TradePrice</td>
+                                <td>696333</td>
+                                <td>int64</td>
+                            </tr>
+                            <tr>
+                                <td>Area</td>
+                                <td>696333</td>
+                                <td>int64</td>
+                            </tr>
+                            <tr>
+                                <td>AreaIsGreater2000</td>
+                                <td>696333</td>
+                                <td>int64</td>
+                            </tr>
+                            <tr>
+                                <td>TotalFloorAreaIsGreater2000</td>
+                                <td>696333</td>
+                                <td>int64</td>
+                            </tr>
+                            <tr>
+                                <td>BuildingYear</td>
+                                <td>696333</td>
+                                <td>int64</td>
+                            </tr>
+                            <tr>
+                                <td>Period</td>
+                                <td>696333</td>
+                                <td>object</td>
+                            </tr>
+                            <tr>
+                                <td>Year</td>
+                                <td>696333</td>
+                                <td>int64</td>
+                            </tr>
+                            <tr>
+                                <td>Quarter</td>
+                                <td>696333</td>
+                                <td>int64</td>
+                            </tr>
+                            <tr>
+                                <td>FloorPlan</td>
+                                <td>696333</td>
+                                <td>object</td>
+                            </tr>
+                            <tr>
+                                <td>TotalFloorArea</td>
+                                <td>696333</td>
+                                <td>float64</td>
+                            </tr>
+                            <tr>
+                                <td>Structure</td>
+                                <td>696333</td>
+                                <td>object</td>
+                            </tr>
+                            <tr>
+                                <td>Building_Age</td>
+                                <td>696333</td>
+                                <td>int64</td>
+                            </tr>
+                            <tr>
+                                <td>TimeToNearestStation</td>
+                                <td>696333</td>
+                                <td>float64</td>
+                            </tr>
+                            <tr>
+                                <td>CityPlanning</td>
+                                <td>696333</td>
+                                <td>object</td>
+                            </tr>
+                            <tr>
+                                <td>Renovation</td>
+                                <td><b>577953</b></td>
+                                <td>float64</td>
+                            </tr>
+                            <tr>
+                                <td>Latitude Centroid</td>
+                                <td>696333</td>
+                                <td>float64</td>
+                            </tr>
+                            <tr>
+                                <td>Longitude Centroid</td>
+                                <td>696333</td>
+                                <td>float64</td>
+                            </tr>
+                            <tr>
+                                <td>JCODE</td>
+                                <td>696333</td>
+                                <td>int64</td>
+                            </tr>
+                            <tr>
+                                <td>Distance_City_Center_KM</td>
+                                <td>696333</td>
+                                <td>float64</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
