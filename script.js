@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", event => {
       document.getElementById("tooltip-text").style.visibility = "hidden";
     });
 
-  // Mapping
+  // Average Price Mapping
   mapboxgl.accessToken =
     "pk.eyJ1IjoiaGVndWFuZWx2aXMiLCJhIjoiY2xnb25mZXI2MGo2NjNua2NyY2UwZWZsNSJ9.In4gfheRxQlTYDAc9g0JiA";
 
@@ -23,6 +23,35 @@ document.addEventListener("DOMContentLoaded", event => {
     center: [139.78, 35.5895],
     zoom: 8,
   });
+
+  class ResetControl {
+    onAdd(map) {
+      this.map = map;
+      this.container = document.createElement('div');
+      this.container.className = 'mapboxgl-ctrl mapboxgl-ctrl-group';
+      this.button = document.createElement('button');
+      this.button.className = 'mapboxgl-ctrl-icon';
+      this.button.style.backgroundImage = 'url(images/reset.png)';
+      this.button.style.backgroundSize = 'cover';
+      this.button.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+      this.button.addEventListener('click', () => {
+        map.flyTo({
+          center: [139.78, 35.5895],
+          zoom: 8,
+        });
+      });
+      this.container.appendChild(this.button);
+      return this.container;
+    }
+
+    onRemove() {
+      this.container.parentNode.removeChild(this.container);
+      this.map = undefined;
+    }
+  }
+
+  map.addControl(new mapboxgl.NavigationControl(), "top-right");
+  map.addControl(new ResetControl(), "top-right");
 
   d3.csv("data/municipal_avg_price.csv").then(priceData => {
     const prices = priceData.map(d => +d.AveragePricePerSQM);
@@ -93,6 +122,7 @@ document.addEventListener("DOMContentLoaded", event => {
       geoData.features.forEach(feature => {
         const jcode = feature.properties.JCODE;
         if (priceMap[jcode]) {
+          feature.properties.JCODE = jcode;
           feature.properties.AveragePricePerSQM =
             +priceMap[jcode].AveragePricePerSQM;
           feature.properties.Prefecture = priceMap[jcode].Prefecture;
@@ -122,9 +152,22 @@ document.addEventListener("DOMContentLoaded", event => {
           },
         });
 
+        map.addLayer({
+          id: "municipalities-border",
+          type: "line",
+          source: "municipalities",
+          filter: ["==", "JCODE", ""],
+          layout: {},
+          paint: {
+            "line-width": 2,
+            "line-color": "#ffffff",
+          },
+        });
+
         map.on("mousemove", "municipalities-layer", function (e) {
           const feature = e.features[0];
 
+          const jcode = feature.properties.JCODE;
           const prefecture = feature.properties.Prefecture;
           const municipality = feature.properties.Municipality;
           const averagePrice = feature.properties.AveragePricePerSQM;
@@ -146,12 +189,14 @@ document.addEventListener("DOMContentLoaded", event => {
           tooltip.style.left = left + "px";
           tooltip.style.top = top + "px";
           tooltip.style.visibility = "visible";
+          map.setFilter("municipalities-border", ["==", "JCODE", jcode]);
         });
 
         map.on("mouseleave", "municipalities-layer", function () {
           const tooltip = document.getElementById("map-tooltip");
           tooltip.innerHTML = "";
           tooltip.style.visibility = "hidden";
+          map.setFilter("municipalities-border", ["==", "JCODE", ""]);
         });
       });
     });
