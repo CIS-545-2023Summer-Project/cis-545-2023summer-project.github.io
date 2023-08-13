@@ -27,14 +27,14 @@ document.addEventListener("DOMContentLoaded", event => {
   class ResetControl {
     onAdd(map) {
       this.map = map;
-      this.container = document.createElement('div');
-      this.container.className = 'mapboxgl-ctrl mapboxgl-ctrl-group';
-      this.button = document.createElement('button');
-      this.button.className = 'mapboxgl-ctrl-icon';
-      this.button.style.backgroundImage = 'url(images/reset.png)';
-      this.button.style.backgroundSize = 'cover';
-      this.button.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
-      this.button.addEventListener('click', () => {
+      this.container = document.createElement("div");
+      this.container.className = "mapboxgl-ctrl mapboxgl-ctrl-group";
+      this.button = document.createElement("button");
+      this.button.className = "mapboxgl-ctrl-icon";
+      this.button.style.backgroundImage = "url(images/reset.png)";
+      this.button.style.backgroundSize = "cover";
+      this.button.style.backgroundColor = "rgba(0, 0, 0, 0.95)";
+      this.button.addEventListener("click", () => {
         map.flyTo({
           center: [139.78, 35.5895],
           zoom: 8,
@@ -131,15 +131,13 @@ document.addEventListener("DOMContentLoaded", event => {
       });
 
       map.on("load", function () {
-        map.addSource("municipalities", {
-          type: "geojson",
-          data: geoData,
-        });
-
         map.addLayer({
           id: "municipalities-layer",
           type: "fill",
-          source: "municipalities",
+          source: {
+            type: "geojson",
+            data: geoData,
+          },
           layout: {},
           paint: {
             "fill-color": [
@@ -155,7 +153,10 @@ document.addEventListener("DOMContentLoaded", event => {
         map.addLayer({
           id: "municipalities-border",
           type: "line",
-          source: "municipalities",
+          source: {
+            type: "geojson",
+            data: geoData,
+          },
           filter: ["==", "JCODE", ""],
           layout: {},
           paint: {
